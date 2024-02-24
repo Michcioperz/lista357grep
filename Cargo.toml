@@ -1,0 +1,18 @@
+[package]
+name = "lista357grep"
+version = "0.1.0"
+edition = "2021"
+
+# See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
+
+[dependencies]
+color-eyre = "0.6.2"
+maud = { version = "0.26.0", features = ["rocket"] }
+quick-xml = { version = "0.31.0", features = ["serialize"] }
+reqwest = { version = "0.11.24", default-features = false, features = ["rustls-tls", "json"] }
+rocket = { version = "0.5.0", features = ["json"] }
+rocket_db_pools = { version = "0.1.0", features = ["sqlx_sqlite"] }
+serde = { version = "1.0.197", features = ["derive"] }
+sqlx = { version = "0.7.3", features = ["runtime-tokio", "sqlite", "time"] }
+time = { version = "0.3.34", features = ["parsing", "macros", "formatting"] }
+time-tz = "2.0.0"

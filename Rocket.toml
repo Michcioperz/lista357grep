@@ -1,0 +1,5 @@
+[default]
+public_url = "https://lista357grep.michci.ooo"
+
+[default.databases.main]
+url = "sqlite://db.sqlite3?mode=rwc"

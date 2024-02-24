@@ -1,0 +1,50 @@
+{
+  "db_name": "SQLite",
+  "query": "\n            SELECT\n                song.id AS id,\n                song.title AS title,\n                song.artist AS artist,\n                listing.date AS min_date,\n                listing.id AS initial_listing,\n                p0.position AS initial_position\n            FROM\n                position p0\n                LEFT OUTER JOIN position p1 ON p0.song_id = p1.song_id AND p1.listing_id < p0.listing_id\n                INNER JOIN song on p0.song_id = song.id\n                INNER JOIN listing ON p0.listing_id = listing.id\n            WHERE\n                p1.id IS NULL\n                AND p0.position <= ?\n                AND p0.waiting_room <= ?\n            ORDER BY min_date DESC, p0.position ASC\n            LIMIT ?\n        ",
+  "describe": {
+    "columns": [
+      {
+        "name": "id",
+        "ordinal": 0,
+        "type_info": "Int64"
+      },
+      {
+        "name": "title",
+        "ordinal": 1,
+        "type_info": "Text"
+      },
+      {
+        "name": "artist",
+        "ordinal": 2,
+        "type_info": "Text"
+      },
+      {
+        "name": "min_date",
+        "ordinal": 3,
+        "type_info": "Date"
+      },
+      {
+        "name": "initial_listing",
+        "ordinal": 4,
+        "type_info": "Int64"
+      },
+      {
+        "name": "initial_position",
+        "ordinal": 5,
+        "type_info": "Int64"
+      }
+    ],
+    "parameters": {
+      "Right": 3
+    },
+    "nullable": [
+      false,
+      false,
+      false,
+      false,
+      false,
+      false
+    ]
+  },
+  "hash": "d57f0715446aac4c9598280a8809e02bd6174a42ade572b8716f42689ea9dab4"
+}
